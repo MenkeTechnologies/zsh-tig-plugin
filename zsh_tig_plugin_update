@@ -16,7 +16,7 @@ fi
 # - it might come from the detection above or from
 # outside (also exported) parameter
 [[ ! -d $ZSH_TIG_DIR || ! -f $ZSH_TIG_DIR/zsh_tig_plugin_update ]] && {
-    print -P "%F{160}Couldn't determine plugin's directory" \
+    print -u2 -P "%F{160}Couldn't determine plugin's directory" \
             "(got: \`$ZSH_TIG_DIR')%f"
     return 1
 }
@@ -37,7 +37,7 @@ if [[ -n $TIGRC_USER ]] {
 
 # Is there a problem with the tigrc?
 [[ -n $orig && ! -r $orig ]] && {
-    print -P "%F{160}The tig config file \`%F{141}$orig%F{160}' doesn't" \
+    print -u2 -P "%F{160}The tig config file \`%F{141}$orig%F{160}' doesn't" \
             "exist or isn't readable%f"
     return 1
 }
@@ -57,7 +57,7 @@ integer retval=$?
 # Verify the last command's status
 (( !retval )) && \
     { print -P "%F{141}Successfully updated the custom tigrc%f"; ((1)); } || \
-    print -P "%F{160}There was a problem creating the custom tigrc" \
+    print -u2 -P "%F{160}There was a problem creating the custom tigrc" \
         "(detected plugin directory: %F{141}${ZSH_TIG_DIR%/.}%F{160})%f"
 
 # vim:ft=zsh:sw=4:sts=4:et
