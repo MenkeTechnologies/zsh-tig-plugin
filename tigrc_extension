@@ -7,6 +7,10 @@ bind generic xmf !sh -c 'make $($ZSH_TIG_DIR/scripts/make-real-targets \
 bind generic xcp +sh -c "printf '%s' %(commit) | xsel -ib && echo 'The Commit SHA Copied Into Cliboard (paste with Cmd-V)'"
 
 # xfcp - copy the selected file into clipboard
-bind generic xfcp +sh -c "cat %(file) | xsel -ib && echo 'File Copied Into The Cliboard (paste with Cmd-V)'"
+bind generic xfcp +sh -c "[[ -z '%(file)' ]] && { \
+    echo 'Please select a file first (e.g.: in the stage view)'; ((1)); } || \
+    cat %(file) | { command -v pbcopy >/dev/null && \
+    { pbcopy; ((1)); } || { command -v xsel >/dev/null && { xsel -ib && \
+    echo 'File Contents Copied Into The Cliboard (paste with Cmd/Ctrl-V)'; ((1)); } || { echo 'No clipboard tool found'; cat >/dev/null; } } }"
 
 # vim:ft=config:sw=4:sts=4:et
