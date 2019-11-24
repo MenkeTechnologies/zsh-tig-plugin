@@ -16,6 +16,8 @@
 # All parameters passed to the script will be forwarded to 'tig'.
 #
 
+# Modifications copyright (c) 2019 Sebastian Gniazdowski
+
 # Run as script?
 if [[ $0 != tig-pick || -n $ZSH_SCRIPT ]]; then
     # Handle $0 according to the Zsh Plugin Standard:
