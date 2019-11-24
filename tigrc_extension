@@ -1,6 +1,12 @@
-# Run the selected Makefile target
+# xmf - run the selected Makefile target
 bind generic xmf !sh -c 'make $($ZSH_TIG_DIR/scripts/make-real-targets \
     "%(directory)/Makefile" | { command -v fzf >/dev/null && { fzf; ((1)); } || \
     { command -v fzy >/dev/null && { fzy; ((1)); } } })'
+
+# xcp - copy the selected SHA into clipboard
+bind generic xcp +sh -c "printf '%s' %(commit) | xsel -ib && echo 'The Commit SHA Copied Into Cliboard (paste with Cmd-V)'"
+
+# xfcp - copy the selected file into clipboard
+bind generic xfcp +sh -c "cat %(file) | xsel -ib && echo 'File Copied Into The Cliboard (paste with Cmd-V)'"
 
 # vim:ft=config:sw=4:sts=4:et
