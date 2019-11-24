@@ -39,6 +39,8 @@ if [[ -n $TIGRC_USER ]] {
 command rm -f $ZSH_TIG_DIR/tigrc
 if [[ -n $orig ]] {
     command cp $orig $ZSH_TIG_DIR/tigrc
+} else {
+    print -P "%F{141}Warning: no user tigrc found%f"
 }
 
 command cat $ZSH_TIG_DIR/tigrc_extension >>! $ZSH_TIG_DIR/tigrc
