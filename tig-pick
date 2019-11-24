@@ -54,9 +54,9 @@ print -r -- 'bind main <Enter> <sh -c "echo %(commit) >&2"' >>! $config
 # Run tig with the standard and error output channels swapped.
 local -x TIGRC_USER=$config
 stderr=$(command tig "$@" 3>&2 2>&1 1>&3 3>&-) || {
-	status=$?
-	print -u2 -r -- $stderr
-	return $status
+    status=$?
+    print -u2 -r -- $stderr
+    return $status
 }
 commit="$(print -r -- "$stderr" | command tail -n1)"
 
