@@ -19,3 +19,5 @@ autoload zsh_tig_plugin_update
 
 (( ${+functions[@zsh-plugin-run-on-update]} )) && \
     @zsh-plugin-run-on-update "zsh_tig_plugin_update"
+
+[[ ! -f $ZSH_TIG_DIR/tigrc ]] && zsh_tig_plugin_update
