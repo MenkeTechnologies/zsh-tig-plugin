@@ -66,6 +66,12 @@ if [[ $commit != [0-9a-f](#c40,40) ]]; then
     return 1
 fi
 
+# Check if the selection was done on a non-commit entry
+if [[ $commit = 0(#c40,40) ]]; then
+    print -u2 -rP -- "%F{160}No commit selected%f"
+    return 1
+fi
+
 print -r -- $commit
 
 # vim:ft=zsh:sw=4:sts=4:et
