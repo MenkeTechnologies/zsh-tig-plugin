@@ -16,3 +16,6 @@ typeset -gx ZSH_TIG_DIR=${0:h}
 alias tig='TIGRC_USER=$ZSH_TIG_DIR/tigrc tig'
 
 autoload zsh_tig_plugin_update
+
+(( ${+functions[@zsh-plugin-run-on-update]} )) && \
+    @zsh-plugin-run-on-update "zsh_tig_plugin_update"
