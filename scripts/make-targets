@@ -2,7 +2,7 @@
 # -*- mode: sh; sh-indentation: 4; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
 # Almost all code borrowed from Zshell's _make function
 #
-# Copyright (c) 2018 Sebastian Gniazdowski
+# Copyright (c) 2019 Sebastian Gniazdowski
 
 emulate -R zsh -o extendedglob
 

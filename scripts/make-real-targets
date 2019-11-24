@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 # -*- mode: sh; sh-indentation: 4; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
 #
-# Copyright (c) 2018 Sebastian Gniazdowski
+# Copyright (c) 2019 Sebastian Gniazdowski
 
 emulate -R zsh -o extended_glob -o warn_create_global -o typeset_silent \
         -o no_short_loops -o rc_quotes -o no_auto_pushd 
