@@ -24,9 +24,9 @@ emulate -LR zsh -o extended_glob -o warn_create_global -o typeset_silent \
 local orig
 if [[ -n $TIGRC_USER ]] {
     orig=$TIGRC_USER
-} elif [[ -r ~/.tigrc ]] {
+} elif [[ -f ~/.tigrc ]] {
     orig=~/.tigrc
-} elif [[ -r ${XDG_CONFIG_HOME:-$HOME/.config}/tig/config ]] {
+} elif [[ -f ${XDG_CONFIG_HOME:-$HOME/.config}/tig/config ]] {
     orig=${XDG_CONFIG_HOME:-$HOME/.config}/tig/config
 }
 
