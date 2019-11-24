@@ -9,10 +9,10 @@ if [[ "$0" != zsh_tig_plugin_update || -n "$ZSH_SCRIPT" ]]; then
     # http://zdharma.org/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html
     0=${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}
     0=${${(M)0##/*}:-$PWD/$0}
-    [[ -d ${0:h} ]] && local ZSH_TIG_DIR=${0:h}
+    [[ -d ${0:h} && -f ${0:h}/zsh_tig_plugin_update ]] && local ZSH_TIG_DIR=${0:h}
 fi
 
-[[ ! -d $ZSH_TIG_DIR ]] && {
+[[ ! -d $ZSH_TIG_DIR || ! -f $ZSH_TIG_DIR/zsh_tig_plugin_update ]] && {
     print -P "%F{160}Couldn't determine plugin's directory" \
             "(got: \`$ZSH_TIG_DIR')%f"
     return 1
