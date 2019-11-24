@@ -50,9 +50,10 @@ if [[ -n $orig ]] {
 
 # Apply the tigrc extensions
 command cat $ZSH_TIG_DIR/tigrc_extension >>! $ZSH_TIG_DIR/tigrc
+integer retval=$?
 
 # Verify the last command's status
-(( !$? )) && \
+(( !retval )) && \
     { print -P "%F{141}Successfully updated the custom tigrc%f"; ((1)); } || \
     print -P "%F{160}There was a problem creating the custom tigrc" \
         "(detected plugin directory: %F{141}${ZSH_TIG_DIR%/.}%F{160})%f"
