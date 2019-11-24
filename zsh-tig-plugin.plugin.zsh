@@ -10,3 +10,9 @@ if [[ ${zsh_loaded_plugins[-1]} != */zsh-tig-plugin && -z ${fpath[(r)${0:h}]} ]]
 then
     fpath+=( "${0:h}" )
 fi
+
+typeset -gx ZSH_TIG_DIR=${0:h}
+
+alias tig='TIGRC_USER=$ZSH_TIG_DIR/tigrc tig'
+
+autoload zsh_tig_plugin_update
