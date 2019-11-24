@@ -22,12 +22,18 @@ emulate -LR zsh -o extended_glob -o warn_create_global -o typeset_silent \
         -o no_short_loops -o rc_quotes -o no_auto_pushd
 
 local orig
-if [[ -n $TIGRC_USER && -f $TIGRC_USER ]] {
+if [[ -n $TIGRC_USER ]] {
     orig=$TIGRC_USER
 } elif [[ -r ~/.tigrc ]] {
     orig=~/.tigrc
 } elif [[ -r ${XDG_CONFIG_HOME:-$HOME/.config}/tig/config ]] {
     orig=${XDG_CONFIG_HOME:-$HOME/.config}/tig/config
+}
+
+[[ -n $orig && ! -r $orig ]] && {
+    print -P "%F{160}The tig config file \`%F{141}$orig%F{160}' doesn't" \
+            "exist or isn't readable%f"
+    return 1
 }
 
 command rm -f $ZSH_TIG_DIR/tigrc
