@@ -62,8 +62,8 @@ commit="$(print -r -- "$stderr" | command tail -n1)"
 
 # Check the returned string for a valid commit ID
 if [[ $commit != [0-9a-f](#c40,40) ]]; then
-	print -u2 -r -- $stderr
-	return 1
+    print -u2 -rP -- "%F{160}$stderr%f"
+    return 1
 fi
 
 print -r -- $commit
