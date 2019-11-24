@@ -46,6 +46,6 @@ EOF
 local -a targets
 targets=( "${(@f)$(make 2>/dev/null $rule -f"$tmpfile")}" )
 
-print -rl -- ${(uon)targets[@]}
+print -rl -- ${(uon)targets[@]:#$rule}
 
 # vim:ft=zsh:sw=4:sts=4:et
