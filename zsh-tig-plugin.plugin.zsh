@@ -19,8 +19,9 @@ typeset -gx ZSH_TIG_DIR=${0:h}
 # The alias that points tig to the extended tigrc
 alias tig='TIGRC_USER=$ZSH_TIG_DIR/tigrc tig'
 
-# Provide the custom tigrc generator
-autoload zsh_tig_plugin_update
+# Provide the custom tigrc generator and other functions
+autoload zsh_tig_plugin_update \
+    tig-pick
 
 # Register an on-update hook as per the plugin standard
 (( ${+functions[@zsh-plugin-run-on-update]} )) && \
