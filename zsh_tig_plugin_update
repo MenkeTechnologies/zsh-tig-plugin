@@ -43,13 +43,13 @@ if [[ -n $TIGRC_USER ]] {
 # Copy the user tigrc (if detected)
 command rm -f $ZSH_TIG_DIR/tigrc
 if [[ -n $orig ]] {
-    command cp $orig $ZSH_TIG_DIR/tigrc
+    print -r -- "source $orig" >! $ZSH_TIG_DIR/tigrc
 } else {
     print -P "%F{141}Warning: no user tigrc found%f"
 }
 
 # Apply the tigrc extensions
-command cat $ZSH_TIG_DIR/tigrc_extension >>! $ZSH_TIG_DIR/tigrc
+print -r -- "source $ZSH_TIG_DIR/tigrc_extension" >>! $ZSH_TIG_DIR/tigrc
 integer retval=$?
 
 # Verify the last command's status
