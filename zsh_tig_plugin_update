@@ -12,15 +12,18 @@ if [[ "$0" != zsh_tig_plugin_update || -n "$ZSH_SCRIPT" ]]; then
     [[ -d ${0:h} && -f ${0:h}/zsh_tig_plugin_update ]] && local ZSH_TIG_DIR=${0:h}
 fi
 
+# Properly verify that the plugin directory is correct
 [[ ! -d $ZSH_TIG_DIR || ! -f $ZSH_TIG_DIR/zsh_tig_plugin_update ]] && {
     print -P "%F{160}Couldn't determine plugin's directory" \
             "(got: \`$ZSH_TIG_DIR')%f"
     return 1
 }
 
+# Standard options, as per the plugin standard
 emulate -LR zsh -o extended_glob -o warn_create_global -o typeset_silent \
         -o no_short_loops -o rc_quotes -o no_auto_pushd
 
+# Detect the user-tigrc location
 local orig
 if [[ -n $TIGRC_USER ]] {
     orig=$TIGRC_USER
@@ -30,12 +33,14 @@ if [[ -n $TIGRC_USER ]] {
     orig=${XDG_CONFIG_HOME:-$HOME/.config}/tig/config
 }
 
+# Is there a problem with the tigrc?
 [[ -n $orig && ! -r $orig ]] && {
     print -P "%F{160}The tig config file \`%F{141}$orig%F{160}' doesn't" \
             "exist or isn't readable%f"
     return 1
 }
 
+# Copy the user tigrc (if detected)
 command rm -f $ZSH_TIG_DIR/tigrc
 if [[ -n $orig ]] {
     command cp $orig $ZSH_TIG_DIR/tigrc
@@ -43,8 +48,10 @@ if [[ -n $orig ]] {
     print -P "%F{141}Warning: no user tigrc found%f"
 }
 
+# Apply the tigrc extensions
 command cat $ZSH_TIG_DIR/tigrc_extension >>! $ZSH_TIG_DIR/tigrc
 
+# Verify the last command's status
 (( !$? )) && \
     { print -P "%F{141}Successfully updated the custom tigrc%f"; ((1)); } || \
     print -P "%F{160}There was a problem creating the custom tigrc" \
