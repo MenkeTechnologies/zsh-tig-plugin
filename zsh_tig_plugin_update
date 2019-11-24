@@ -3,6 +3,15 @@
 #
 # Copyright (c) 2019 Sebastian Gniazdowski
 
+# Run as script?
+if [[ "$0" != zsh_tig_plugin_update || -n "$ZSH_SCRIPT" ]]; then
+    # Handle $0 according to the Zsh Plugin Standard:
+    # http://zdharma.org/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html
+    0=${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}
+    0=${${(M)0##/*}:-$PWD/$0}
+    local ZSH_TIG_DIR=${0:h}
+fi
+
 emulate -LR zsh -o extended_glob -o warn_create_global -o typeset_silent \
         -o no_short_loops -o rc_quotes -o no_auto_pushd
 
