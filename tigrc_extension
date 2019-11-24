@@ -4,11 +4,16 @@ bind generic xmf !sh -c 'make $($ZSH_TIG_DIR/scripts/make-real-targets \
     { command -v fzy >/dev/null && { fzy; ((1)); } } })'
 
 # xcp - copy the selected SHA into clipboard
-bind generic xcp !sh -c "[[ -z '%(commit)' ]] && { \
+bind generic xcp +sh -c "[[ '%(commit)' = 0000000000000000000000000000000000000000 ]] && { \
     echo 'Please select a commit first'; ((1)); } || \
-    printf '%s' %(commit) | { command -v pbcopy >/dev/null && \
-    { pbcopy; ((1)); } || { command -v xsel >/dev/null && { xsel -ib && \
-    echo 'The Commit SHA Copied Into Cliboard (paste with Cmd/Ctrl-V)'; ((1)); } || { echo 'No clipboard tool found'; cat >/dev/null; } } }"
+    printf '%s' %(commit) | { \
+        command -v pbcopy >/dev/null && { pbcopy && \
+            echo 'The Commit SHA Copied Into Cliboard'; ((1)); } || \
+        { command -v xsel >/dev/null && \ { xsel -ib && \
+            echo 'The Commit SHA Copied Into Cliboard'; ((1)); } || \
+        { command -v xclip >/dev/null && { xclip -selection clipboard && \
+            echo 'The Commit SHA Copied Into Cliboard'; ((1)); } || \
+        { echo 'No clipboard tool found'; cat >/dev/null; } } } }"
 
 # xfcp - copy the selected file into clipboard
 bind generic xfcp +sh -c "[[ -z '%(file)' ]] && { \
