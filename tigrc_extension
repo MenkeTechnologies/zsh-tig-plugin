@@ -3,8 +3,8 @@ bind generic xmf !sh -c 'make $($ZSH_TIG_DIR/scripts/make-real-targets \
     "%(directory)/Makefile" | { command -v fzf >/dev/null && { fzf; ((1)); } || \
     { command -v fzy >/dev/null && { fzy; ((1)); } } })'
 
-# xcp - copy the selected SHA into clipboard
-bind generic xcp +sh -c "[[ '%(commit)' = 0000000000000000000000000000000000000000 ]] && { \
+# xcpc - copy the selected SHA into clipboard
+bind generic xcpc +sh -c "[[ '%(commit)' = 0000000000000000000000000000000000000000 ]] && { \
     echo 'Please select a commit first'; ((1)); } || \
     printf '%s' %(commit) | { \
         command -v pbcopy >/dev/null && { pbcopy && \
@@ -15,8 +15,8 @@ bind generic xcp +sh -c "[[ '%(commit)' = 00000000000000000000000000000000000000
             echo 'The Commit SHA Copied Into Cliboard'; ((1)); } || \
         { echo 'No clipboard tool found'; cat >/dev/null; } } } }"
 
-# xfcp - copy the selected file into clipboard
-bind generic xfcp +sh -c "[[ -z '%(file)' ]] && { \
+# xcpf - copy the selected file into clipboard
+bind generic xcpf +sh -c "[[ -z '%(file)' ]] && { \
     echo 'Please select a file first (e.g.: in the stage view)'; ((1)); } || \
         cat %(file) | { \
         command -v pbcopy >/dev/null && { pbcopy && \
