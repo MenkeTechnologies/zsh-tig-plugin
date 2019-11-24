@@ -18,8 +18,13 @@ bind generic xcp +sh -c "[[ '%(commit)' = 00000000000000000000000000000000000000
 # xfcp - copy the selected file into clipboard
 bind generic xfcp +sh -c "[[ -z '%(file)' ]] && { \
     echo 'Please select a file first (e.g.: in the stage view)'; ((1)); } || \
-    cat %(file) | { command -v pbcopy >/dev/null && \
-    { pbcopy; ((1)); } || { command -v xsel >/dev/null && { xsel -ib && \
-    echo 'File Contents Copied Into The Cliboard (paste with Cmd/Ctrl-V)'; ((1)); } || { echo 'No clipboard tool found'; cat >/dev/null; } } }"
+        cat %(file) | { \
+        command -v pbcopy >/dev/null && { pbcopy && \
+            echo 'File Contents Copied Into The Cliboard'; ((1)); } || \
+        { command -v xsel >/dev/null && \ { xsel -ib && \
+            echo 'File Contents Copied Into The Cliboard'; ((1)); } || \
+        { command -v xclip >/dev/null && { xclip -selection clipboard && \
+            echo 'File Contents Copied Into The Cliboard'; ((1)); } || \
+        { echo 'No clipboard tool found'; cat >/dev/null; } } } }"
 
 # vim:ft=config:sw=4:sts=4:et
