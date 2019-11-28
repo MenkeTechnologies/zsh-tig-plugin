@@ -1,7 +1,11 @@
 # xmf - run the selected Makefile target
-bind generic xmf !sh -c 'make $($ZSH_TIG_DIR/scripts/make-real-targets \
-    "%(directory)/Makefile" | { command -v fzf >/dev/null && { fzf; ((1)); } || \
-    { command -v fzy >/dev/null && { fzy; ((1)); } } })'
+bind generic xmf !sh -c 'if [[ -f %(directory)/Makefile ]]; then \
+    make $($ZSH_TIG_DIR/scripts/make-real-targets "%(directory)/Makefile" | \
+        { command -v fzf >/dev/null && { fzf; ((1)); } || \
+            { command -v fzy >/dev/null && { fzy; ((1)); } } }); \
+    else \
+        echo No Makefile found; \
+    fi'
 
 # xcpc - copy the selected SHA into clipboard
 bind generic xcpc +sh -c "OKMESSAGE='The Commit SHA Copied Into Cliboard'; \
