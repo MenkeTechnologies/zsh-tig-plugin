@@ -14,12 +14,20 @@ Retrieves the list of targets for `Makefile` in the current directory and runs
 `fzf` or `fzy` on the list and then, when a target gets selected, executes
 `make` on that target.
 
-### xcpc - eXecute CoPy Commit
+### xamf – eXecute `all` MakeFile
+
+Runs `make all`
+
+### xcmf – eXecute `clean` MakeFile
+
+Runs `make clean`
+
+### xcp - eXecute CoPy
 
 Copies the SHA of currently active (highlighted) commit into the clipboard.
 Supports OS X's `pbcopy` and Linux/other's `xsel` and `xclip`.
 
-### xcpf - eXecute CoPy File
+### xcpf - eXecute File CoPy
 
 Copies the contents of currently active (highlighted) file into the clipboard.
 Supports OS X's `pbcopy` and Linux/other's `xsel` and `xclip`.
