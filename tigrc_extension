@@ -7,8 +7,8 @@ bind generic xmf !sh -c 'if [[ -f %(directory)/Makefile ]]; then \
         echo No Makefile found; \
     fi'
 
-# xcpc - copy the selected SHA into clipboard
-bind generic xcpc +sh -c "OKMESSAGE='The Commit SHA Copied Into Cliboard'; \
+# xcp - copy the selected SHA into clipboard
+bind generic xcp +sh -c "OKMESSAGE='The Commit SHA Copied Into Cliboard'; \
     [[ '%(commit)' = 0000000000000000000000000000000000000000 ]] && { \
     echo 'Please select a commit first'; ((1)); } || \
     printf '%s' %(commit) | { \
@@ -20,8 +20,8 @@ bind generic xcpc +sh -c "OKMESSAGE='The Commit SHA Copied Into Cliboard'; \
             echo \$OKMESSAGE; ((1)); } || \
         { echo 'No clipboard tool found'; cat >/dev/null; } } } }"
 
-# xcpf - copy the selected file into clipboard
-bind generic xcpf +sh -c "OKMESSAGE='File Contents Copied Into The Cliboard'; \
+# xfcp - copy the selected file into clipboard
+bind generic xfcp +sh -c "OKMESSAGE='File Contents Copied Into The Cliboard'; \
     [[ -z '%(file)' ]] && { \
     echo 'Please select a file first (e.g.: in the stage view)'; ((1)); } || \
         cat %(file) | { \
