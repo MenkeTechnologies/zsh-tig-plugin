@@ -14,6 +14,13 @@ bind generic xamf !sh -c 'if [[ -f %(directory)/Makefile ]]; then \
         echo No Makefile found; \
     fi'
 
+# xcmf - run make clean
+bind generic xcmf !sh -c 'if [[ -f %(directory)/Makefile ]]; then \
+        make clean; \
+    else \
+        echo No Makefile found; \
+    fi'
+
 # xcp - copy the selected SHA into clipboard
 bind generic xcp +sh -c "OKMESSAGE='The Commit SHA Copied Into Cliboard'; \
     [[ '%(commit)' = 0000000000000000000000000000000000000000 ]] && { \
