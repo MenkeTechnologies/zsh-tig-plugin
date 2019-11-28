@@ -47,4 +47,10 @@ bind generic xfcp +sh -c "OKMESSAGE='File Contents Copied Into The Cliboard'; \
             echo \$OKMESSAGE; ((1)); } || \
         { echo 'No clipboard tool found'; cat >/dev/null; } } } }"
 
+# xmc – run Midnight Commander
+bind generic xmc !sh -c 'mc %(directory) ${ZSH_TIG_MC_DIR:-$HOME}'
+
+# xhmc – run Midnight Commander in home directory (right pane)
+bind generic xhmc !sh -c 'mc %(directory) $HOME'
+
 # vim:ft=config:sw=4:sts=4:et
