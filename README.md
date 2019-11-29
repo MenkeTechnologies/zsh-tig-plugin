@@ -60,4 +60,38 @@ Executes `mc` with the left pane set to the repository and the right pane to
 Executes `mc` with the left pane set to the repository and the right pane to the
 home directory.
 
+## Installation
+
+### Zplugin
+
+```zsh
+zplugin load zdharma/zsh-tig-plugin
+```
+
+or with use of the Turbo mode:
+
+```zsh
+zplugin wait lucid for zdharma/zsh-tig-plugin
+```
+
+### Antigen
+
+Add `antigen bundle zdharma/zsh-tig-plugin` to your `.zshrc` file. Antigen will handle
+cloning the plugin for you automatically the next time you start zsh.
+
+```zsh
+antigen bundle zdharma/zsh-tig-plugin
+```
+
+### Oh-My-Zsh
+
+1. `cd ~/.oh-my-zsh/custom/plugins`
+2. `git clone git@github.com:zdharma/zsh-tig-plugin.git`
+3. Add `zsh-tig-plugin` to your plugin list
+
+### Zgen
+
+Add `zgen load zdharma/zsh-tig-plugin` to your .zshrc file in the same place you're doing
+your other `zgen load` calls in.
+
 <!-- vim:set ft=markdown tw=80 fo+=a1n autoindent: -->
