@@ -8,46 +8,54 @@ subdirectory.
 
 ## The Added Bindings
 
-### xmf – eXecute MakeFile
+### Make Bindings
+
+#### xmf – eXecute MakeFile
 
 Retrieves the list of targets for `Makefile` in the current directory and runs
 `fzf` or `fzy` on the list and then, when a target gets selected, executes
 `make` on that target.
 
-### xamf – eXecute `all` MakeFile
+#### xamf – eXecute `all` MakeFile
 
 Runs `make all`
 
-### xcmf – eXecute `clean` MakeFile
+#### xcmf – eXecute `clean` MakeFile
 
 Runs `make clean`
 
-### xcp - eXecute CoPy
+### Copy Bindings
+
+#### xcp - eXecute CoPy
 
 Copies the SHA of currently active (highlighted) commit into the clipboard.
 Supports OS X's `pbcopy` and Linux/other's `xsel` and `xclip`.
 
-### xcpf - eXecute File CoPy
+#### xfcp - eXecute File CoPy
 
 Copies the contents of currently active (highlighted) file into the clipboard.
 Supports OS X's `pbcopy` and Linux/other's `xsel` and `xclip`.
 
-### xed - eXecute EDitor
+### Editor Bindings
+
+#### xed - eXecute EDitor
 
 Executes an editor on selected file. It's either `$VISUAL`, then `$EDITOR` and
 then `vim`.
 
-### xled - eXecute List EDitor
+#### xled - eXecute List EDitor
 
 Runs fuzzy-finder (either `fzf` or `fzy`) on the list of the files in the
 repository and after selecting one it then executes an editor like in `xed`.
 
-### xmc – eXecute Midnight Commander
+### Midnight Commander Bindings
+
+#### xmc – eXecute Midnight Commander
 
 Executes `mc` with the left pane set to the repository and the right pane to
 `$ZSH_TIG_MC_DIR`. If the variable isn't set it uses `$HOME` instead.
 
-### xhmc – eXecute Home Midnight Commander
+#### xhmc – eXecute Home Midnight Commander
 
 Executes `mc` with the left pane set to the repository and the right pane to the
 home directory.
