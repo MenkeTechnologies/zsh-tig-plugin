@@ -1,3 +1,30 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [zsh-tig-plugin](#zsh-tig-plugin)
+  - [The Added Bindings](#the-added-bindings)
+    - [—— Make Bindings ——](#-make-bindings-)
+      - [xmf – eXecute MakeFile](#xmf--execute-makefile)
+      - [xamf – eXecute `all` MakeFile](#xamf--execute-all-makefile)
+      - [xcmf – eXecute `clean` MakeFile](#xcmf--execute-clean-makefile)
+    - [—— Copy Bindings ——](#-copy-bindings-)
+      - [xcp - eXecute CoPy](#xcp---execute-copy)
+      - [xfcp - eXecute File CoPy](#xfcp---execute-file-copy)
+    - [—— Editor Bindings ——](#-editor-bindings-)
+      - [xed - eXecute EDitor](#xed---execute-editor)
+      - [xled - eXecute List EDitor](#xled---execute-list-editor)
+    - [—— Midnight Commander Bindings ——](#-midnight-commander-bindings-)
+      - [xmc – eXecute Midnight Commander](#xmc--execute-midnight-commander)
+      - [xhmc – eXecute Home Midnight Commander](#xhmc--execute-home-midnight-commander)
+  - [Installation](#installation)
+    - [Zplugin](#zplugin)
+    - [Antigen](#antigen)
+    - [Oh-My-Zsh](#oh-my-zsh)
+    - [Zgen](#zgen)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # zsh-tig-plugin
 
 A plugin for Zsh that automatically adds a few advanced bindings and also
