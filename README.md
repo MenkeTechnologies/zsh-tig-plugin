@@ -99,7 +99,7 @@ zdharma/zsh-tig-plugin`.
 zplugin load zdharma/zsh-tig-plugin
 ```
 
-or with use of the Turbo mode:
+Or with use of the Turbo mode:
 
 ```zsh
 zplugin wait lucid for zdharma/zsh-tig-plugin
