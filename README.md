@@ -91,6 +91,10 @@ home directory.
 
 ### Zplugin
 
+Add `zplugin load zdharma/zsh-tig-plugin` to your `.zshrc` file. Zplugin will
+clone the plugin the next time you start zsh. To update issue `zplugin update
+zdharma/zsh-tig-plugin`.
+
 ```zsh
 zplugin load zdharma/zsh-tig-plugin
 ```
@@ -103,8 +107,8 @@ zplugin wait lucid for zdharma/zsh-tig-plugin
 
 ### Antigen
 
-Add `antigen bundle zdharma/zsh-tig-plugin` to your `.zshrc` file. Antigen will handle
-cloning the plugin for you automatically the next time you start zsh.
+Add `antigen bundle zdharma/zsh-tig-plugin` to your `.zshrc` file. Antigen will
+handle cloning the plugin for you automatically the next time you start zsh.
 
 ```zsh
 antigen bundle zdharma/zsh-tig-plugin
@@ -118,7 +122,7 @@ antigen bundle zdharma/zsh-tig-plugin
 
 ### Zgen
 
-Add `zgen load zdharma/zsh-tig-plugin` to your .zshrc file in the same place you're doing
-your other `zgen load` calls in.
+Add `zgen load zdharma/zsh-tig-plugin` to your .zshrc file in the same place
+you're doing your other `zgen load` calls in.
 
 <!-- vim:set ft=markdown tw=80 fo+=a1n autoindent: -->
