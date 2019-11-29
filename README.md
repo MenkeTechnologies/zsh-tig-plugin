@@ -8,7 +8,7 @@ subdirectory.
 
 ## The Added Bindings
 
-### Make Bindings
+### —— Make Bindings ——
 
 #### xmf – eXecute MakeFile
 
@@ -24,7 +24,7 @@ Runs `make all`
 
 Runs `make clean`
 
-### Copy Bindings
+### —— Copy Bindings ——
 
 #### xcp - eXecute CoPy
 
@@ -36,7 +36,7 @@ Supports OS X's `pbcopy` and Linux/other's `xsel` and `xclip`.
 Copies the contents of currently active (highlighted) file into the clipboard.
 Supports OS X's `pbcopy` and Linux/other's `xsel` and `xclip`.
 
-### Editor Bindings
+### —— Editor Bindings ——
 
 #### xed - eXecute EDitor
 
@@ -48,7 +48,7 @@ then `vim`.
 Runs fuzzy-finder (either `fzf` or `fzy`) on the list of the files in the
 repository and after selecting one it then executes an editor like in `xed`.
 
-### Midnight Commander Bindings
+### —— Midnight Commander Bindings ——
 
 #### xmc – eXecute Midnight Commander
 
