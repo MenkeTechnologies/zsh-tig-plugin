@@ -58,4 +58,16 @@ bind generic xed !sh -c '[[ -z "%(file)" ]] && \
     { echo "Please select a file first, or use xled binding"; ((1)); } || \
     ${VISUAL:-${EDITOR:-vim}} %(file)'
 
+# xled - run editor through a fuzzy finder
+bind generic xled !sh -c '\
+        { command -v fszf >/dev/null && { \
+            ${VISUAL:-${EDITOR:-vim}} \
+            "$(find | egrep -v "^\\./\\.(git|_zplugin)" | \
+                    sed -e "s/^\\.\\///" | fzf)"; ((1)); } || \
+            { command -v fzy >/dev/null && { \
+                ${VISUAL:-${EDITOR:-vim}} \
+                    "$(find | egrep -v "^\\./\\.(git|_zplugin)" | \
+                            sed -e "s/^\\.\\///" | fzy)"; \
+                    ((1)); } } };'
+
 # vim:ft=config:sw=4:sts=4:et
