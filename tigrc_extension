@@ -53,4 +53,9 @@ bind generic xmc !sh -c 'mc %(directory) ${ZSH_TIG_MC_DIR:-$HOME}'
 # xhmc – run Midnight Commander in home directory (right pane)
 bind generic xhmc !sh -c 'mc %(directory) $HOME'
 
+# xed - run editor on the selected file
+bind generic xed !sh -c '[[ -z "%(file)" ]] && \
+    { echo "Please select a file first, or use xled binding"; ((1)); } || \
+    ${VISUAL:-${EDITOR:-vim}} %(file)'
+
 # vim:ft=config:sw=4:sts=4:et
