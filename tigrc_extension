@@ -60,7 +60,7 @@ bind generic xed !sh -c '[[ -z "%(file)" ]] && \
 
 # xled - run editor through a fuzzy finder
 bind generic xled !sh -c '\
-        { command -v fszf >/dev/null && { \
+        { command -v fzf >/dev/null && { \
             ${VISUAL:-${EDITOR:-vim}} \
             "$(find | egrep -v "^\\./\\.(git|_zplugin)" | \
                     sed -e "s/^\\.\\///" | fzf)"; ((1)); } || \
