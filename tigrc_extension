@@ -1,21 +1,21 @@
 # xmf - run the selected Makefile target
-bind generic xmf !sh -c 'if [[ -f %(directory)/Makefile ]]; then \
+bind generic xmf !sh -c 'if [ -f \"%(directory)/Makefile\" ]; then \
     make "$($ZSH_TIG_DIR/scripts/make-real-targets "%(directory)/Makefile" | \
-        { command -v fzf >/dev/null && { fzf; ((1)); } || \
-            { command -v fzy >/dev/null && { fzy; ((1)); } } })"; \
+        { command -v fzf >/dev/null && { fzf; true; } || \
+            { command -v fzy >/dev/null && { fzy; true; } } })"; \
     else \
         echo No Makefile found; \
     fi'
 
 # xamf - run make all
-bind generic xamf !sh -c 'if [[ -f %(directory)/Makefile ]]; then \
+bind generic xamf !sh -c 'if [ -f \"%(directory)/Makefile\" ]; then \
         make all; \
     else \
         echo No Makefile found; \
     fi'
 
 # xcmf - run make clean
-bind generic xcmf !sh -c 'if [[ -f %(directory)/Makefile ]]; then \
+bind generic xcmf !sh -c 'if [ -f \"%(directory)/Makefile\" ]; then \
         make clean; \
     else \
         echo No Makefile found; \
@@ -23,28 +23,28 @@ bind generic xcmf !sh -c 'if [[ -f %(directory)/Makefile ]]; then \
 
 # xcp - copy the selected SHA into clipboard
 bind generic xcp +sh -c "OKMESSAGE='The Commit SHA Copied Into Cliboard'; \
-    [[ '%(commit)' = 0000000000000000000000000000000000000000 ]] && { \
-    echo 'Please select a commit first'; ((1)); } || \
+    [ '%(commit)' = 0000000000000000000000000000000000000000 ] && { \
+    echo 'Please select a commit first'; true; } || \
     printf '%s' %(commit) | { \
         command -v pbcopy >/dev/null && { pbcopy && \
-            echo \$OKMESSAGE; ((1)); } || \
+            echo \$OKMESSAGE; true; } || \
         { command -v xsel >/dev/null && \ { xsel -ib && \
-            echo \$OKMESSAGE; ((1)); } || \
+            echo \$OKMESSAGE; true; } || \
         { command -v xclip >/dev/null && { xclip -selection clipboard && \
-            echo \$OKMESSAGE; ((1)); } || \
+            echo \$OKMESSAGE; true; } || \
         { echo 'No clipboard tool found'; cat >/dev/null; } } } }"
 
 # xfcp - copy the selected file into clipboard
 bind generic xfcp +sh -c "OKMESSAGE='File Contents Copied Into The Cliboard'; \
-    [[ -z '%(file)' ]] && { \
-    echo 'Please select a file first (e.g.: in the stage view)'; ((1)); } || \
+    [ -z '%(file)' ] && { \
+    echo 'Please select a file first (e.g.: in the stage view)'; true; } || \
         cat %(file) | { \
         command -v pbcopy >/dev/null && { pbcopy && \
-            echo \$OKMESSAGE; ((1)); } || \
+            echo \$OKMESSAGE; true; } || \
         { command -v xsel >/dev/null && \ { xsel -ib && \
-            echo \$OKMESSAGE; ((1)); } || \
+            echo \$OKMESSAGE; true; } || \
         { command -v xclip >/dev/null && { xclip -selection clipboard && \
-            echo \$OKMESSAGE; ((1)); } || \
+            echo \$OKMESSAGE; true; } || \
         { echo 'No clipboard tool found'; cat >/dev/null; } } } }"
 
 # xmc – run Midnight Commander
@@ -54,8 +54,8 @@ bind generic xmc !sh -c 'mc %(directory) ${ZSH_TIG_MC_DIR:-$HOME}'
 bind generic xhmc !sh -c 'mc %(directory) $HOME'
 
 # xed - run editor on the selected file
-bind generic xed !sh -c '[[ -z "%(file)" ]] && \
-    { echo "Please select a file first, or use xled binding"; ((1)); } || \
+bind generic xed !sh -c '[ -z "%(file)" ] && \
+    { echo "Please select a file first, or use xled binding"; true; } || \
     ${VISUAL:-${EDITOR:-vim}} %(file)'
 
 # xled - run editor through a fuzzy finder
@@ -63,11 +63,11 @@ bind generic xled !sh -c '\
         { command -v fzf >/dev/null && { \
             ${VISUAL:-${EDITOR:-vim}} \
             "$(find | egrep -v "^\\./\\.(git|_zplugin)" | \
-                    sed -e "s/^\\.\\///" | fzf)"; ((1)); } || \
+                    sed -e "s/^\\.\\///" | fzf)"; true; } || \
             { command -v fzy >/dev/null && { \
                 ${VISUAL:-${EDITOR:-vim}} \
                     "$(find | egrep -v "^\\./\\.(git|_zplugin)" | \
                             sed -e "s/^\\.\\///" | fzy)"; \
-                    ((1)); } } };'
+                    true; } } };'
 
 # vim:ft=config:sw=4:sts=4:et
